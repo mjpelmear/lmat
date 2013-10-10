@@ -1,5 +1,8 @@
 <?php
-$url = 'http://lriserver.inbloom.org/search?opts={"service":"elasticsearch"}';
+
+require_once( 'include/common.php' );
+
+$url = LRI_SERVER . '/search?opts={"service":"elasticsearch"}';
 $curl = curl_init($url);
 
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);

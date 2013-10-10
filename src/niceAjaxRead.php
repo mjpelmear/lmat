@@ -1,10 +1,8 @@
 <?php
 
-if(isset($_GET['query'])) {
-  $query = $_GET['query'];
-} else {
-  $query = "";
-}
+require_once( 'include/common.php' );
+
+$query = isset($_GET['query']) ? $_GET['query'] : "";
 
 $curl = curl_init();
 
@@ -18,7 +16,7 @@ print $data;
 
 function api_call($curl, $query) {
   $newData = array();
-  $base_url = 'http://ec2-54-211-165-17.compute-1.amazonaws.com:8080/lri-reboot-0.1.0.BUILD-SNAPSHOT/standards';
+  $base_url = LRI_REBOOT_SERVER . LRI_REBOOT_APP_PATH . '/standards';
   curl_setopt($curl, CURLOPT_URL, $base_url . $query);
   $data = curl_exec($curl);
   return $data;
