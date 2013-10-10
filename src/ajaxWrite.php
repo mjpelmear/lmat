@@ -1,5 +1,7 @@
 <?php
 
+require_once( 'include/common.php' );
+
 if(isset($_GET['query'])) {
   $query = "/" . $_GET['query'];
 } else {
@@ -8,7 +10,7 @@ if(isset($_GET['query'])) {
 
 $data = file_get_contents('php://input');
 
-$url = 'http://ec2-54-211-165-17.compute-1.amazonaws.com:8080/lri-reboot-0.1.0.BUILD-SNAPSHOT/standards';
+$url = LRI_REBOOT_SERVER . LRI_REBOOT_APP_PATH . '/standards';
 $curl = curl_init($url . $query);
 
 curl_setopt($curl, CURLOPT_POST, true);
